@@ -6,9 +6,15 @@ const { Op } = require("sequelize");
 
 router.get('/', async function (req, res, next){
   const name = req.query.name;
+  let countries = []
   if(name === undefined) {
-    let countries = [];
-    try {
+    let countriesDB = await Country.findAll({
+        attributes: ["id", "name", "image", "continent", "capital",
+        "subregion", "area", "population"]
+    });
+    console.log(countries, "ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    if (countriesDB.length===0){
+      try {
       const {data} = await axios.get(`https://restcountries.eu/rest/v2/all`);
       for(let i = 0; i<data.length; i++) {
         const country = await Country.create({
@@ -27,6 +33,13 @@ router.get('/', async function (req, res, next){
     } catch (error){
       next(error);
     }
+  } else {
+    try{
+      res.json(countriesDB);
+    } catch (error){
+      next(error)
+    }
+  }
  } else {
     const countries = await Country.findAll({
         where: {
