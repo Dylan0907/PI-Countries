@@ -12,6 +12,7 @@ export default function Filters() {
   };
 
   return (
+    <React.Fragment>
     <div>
       <select onChange={e => handleFilterContinent(e)} >
         <option value="">Select a continent...</option>
@@ -22,5 +23,11 @@ export default function Filters() {
         <option value="Oceania">Oceania</option>
       </select>
     </div>
+    <div>
+      <select>
+        <option value="">Select an activity</option>
+      </select>
+    </div>
+    </React.Fragment>
   )
 }

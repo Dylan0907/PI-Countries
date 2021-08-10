@@ -13,6 +13,7 @@ export default function MainPage () {
   }, [dispatch]);
   const allCountries = useSelector((state) => state.countries);
   const typeOrder = useSelector((state) => state.orderedBy);
+  const activities = useSelector((state) => state.activities);
   const [currentPage,setCurrentPage] = useState(1);
   const [countriesPerPage]= useState(9);
   const indexOfLastCountry = currentPage * countriesPerPage;
@@ -22,6 +23,7 @@ export default function MainPage () {
   return(
     <React.Fragment>
         <div>
+          <h1>Countries</h1>
           <Link to="/addactivity">
             <button>Add Touristic Activity</button>
           </Link>

@@ -44,3 +44,10 @@ export function filterByContinent(payload) {
       payload
   }
 }
+
+export function postActivity(payload) {
+  return async function (dispatch) {
+    await axios.post(`http://localhost:3001/activity`, payload);
+    return dispatch({ type: "POST_ACTIVITY", payload: payload });
+  };
+}

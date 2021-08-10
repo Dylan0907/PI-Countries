@@ -2,24 +2,25 @@ const router = require('express').Router();
 const {Country, Activity} = require('../db.js');
 const axios = require('axios');
 
-router.post('/', async function (req, res, next) {
-  try {
+router.post('/', function (req, res, next) {
     const {
       name,
       difficulty,
       duration,
-      season
+      season,
+      countries
     } = req.body;
-    const newActivity = await Activity.create({
+    Activity.findOrCreate({
+      where:{
         name: name,
-        difficulty: difficulty,
+        difficulty: parseInt(difficulty[0]),
         duration: duration,
-        season: season
-     })
-     res.json(newGame.toJSON())
-   } catch(error){
-     next(error)
-   }
+        season: season[0]
+      }
+    }).then((activity)=>{
+      countries.forEach((id) => activity[0].addCountries(id))
+    })
+    res.sendStatus(200).end();
 })
 
 module.exports = router;

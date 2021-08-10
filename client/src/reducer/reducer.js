@@ -1,6 +1,7 @@
 const initialState = {
     countries: [],
     countryDetail:[],
+    activities:[],
     orderedBy:{
       name:'',
       population:''
@@ -23,6 +24,11 @@ export default function reducer(state=initialState, action){
     return {
       ...state,
       countries: action.payload
+    }
+    case "POST_ACTIVITY":
+    return {
+      ...state,
+      activities:[ ...state.activities,action.payload]
     }
     case 'ORDER_BY_NAME':
       let sortedName = action.payload === 'A-Z' ?
