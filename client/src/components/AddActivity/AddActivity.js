@@ -66,11 +66,11 @@ export default function AddActivity() {
     alert("Activity created!!")
     setInput({
         name:" ",
-        nickname: '',
-        birthday: '',
-        status: '',
+        difficulty: '',
+        duration: '',
+        season: '',
         image: '',
-        occupation:[]
+        countries:[]
     })
     history.push('/main')
 }

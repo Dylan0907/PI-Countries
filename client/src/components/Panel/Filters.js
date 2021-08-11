@@ -1,14 +1,22 @@
 import React from 'react'
-import { useDispatch } from "react-redux";
-import {filterByContinent} from "../../actions/actions"
+import { useDispatch, useSelector } from "react-redux";
+import {filterByContinent,filterByActivity} from "../../actions/actions"
 
 export default function Filters() {
 
   const dispatch = useDispatch()
+  const activities = useSelector((state) => state.activities);
 
   function handleFilterContinent (e){
+    if(e.target.value !== ''){
     e.preventDefault();
-    dispatch(filterByContinent(e.target.value))
+    dispatch(filterByContinent(e.target.value))}
+  };
+
+  function handleFilterActivity (e){
+    if(e.target.value !== ''){
+    e.preventDefault();
+    dispatch(filterByActivity(e.target.value))}
   };
 
   return (
@@ -24,8 +32,13 @@ export default function Filters() {
       </select>
     </div>
     <div>
-      <select>
+      <select onChange={e => handleFilterActivity(e)}>
         <option value="">Select an activity</option>
+        {activities.map((a)=>{
+          return (
+            <option value={a.name}>{a.name}</option>
+          )
+        })}
       </select>
     </div>
     </React.Fragment>

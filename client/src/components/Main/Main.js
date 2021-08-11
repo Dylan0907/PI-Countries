@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import {getCountries} from "../../actions/actions"
+import {getCountries, getActivities} from "../../actions/actions"
 import { Link } from 'react-router-dom';
 import Panel from '../Panel/Panel'
 import Card from '../Card/Card'
@@ -10,6 +10,7 @@ export default function MainPage () {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCountries());
+    dispatch(getActivities());
   }, [dispatch]);
   const allCountries = useSelector((state) => state.countries);
   const typeOrder = useSelector((state) => state.orderedBy);
@@ -20,6 +21,11 @@ export default function MainPage () {
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
   const currentCountries = allCountries.slice(indexOfFirstCountry,indexOfLastCountry)
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const handleClick = (e) => {
+    e.preventDefault();
+    setCurrentPage(1)
+    dispatch(getCountries());
+  };
   return(
     <React.Fragment>
         <div>
@@ -29,6 +35,13 @@ export default function MainPage () {
           </Link>
         </div>
         <Panel/>
+        <button
+          onClick={(e) => {
+            handleClick(e);
+          }}
+        >
+          Restore
+        </button>
         <div>
           <Pagination
               countriesPerPage={countriesPerPage}
@@ -40,7 +53,7 @@ export default function MainPage () {
           return (
             <fragment className='countries'>
               <Link to={"/detail/" + c.id}>
-                <Card name={c.name} image={c.image} continent={c.continent}  key={c.id} />
+                <Card name={c.name} image={c.image} continent={c.continent} key={c.id} />
               </Link>
             </fragment>
           );

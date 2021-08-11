@@ -15,6 +15,11 @@ export default function reducer(state=initialState, action){
       ...state,
       countries: action.payload
     }
+    case "GET_ACTIVITIES":
+    return {
+      ...state,
+      activities: action.payload
+    }
     case "GET_DETAIL":
     return {
       ...state,
@@ -24,11 +29,6 @@ export default function reducer(state=initialState, action){
     return {
       ...state,
       countries: action.payload
-    }
-    case "POST_ACTIVITY":
-    return {
-      ...state,
-      activities:[ ...state.activities,action.payload]
     }
     case 'ORDER_BY_NAME':
       let sortedName = action.payload === 'A-Z' ?
@@ -90,8 +90,18 @@ export default function reducer(state=initialState, action){
         return {
           ...state,
           countries: countriesByCont
-        }
+      }
+      case 'FILTER_BY_ACTIVITY':
+        let count = state.countries;
+        let activities = state.activities
+        let activity = activities.filter(a => a.name === action.payload)
+        let countriesByActivity = activity[0].countries.map((c) => {return c.id});
+        let countriesFiltered = count.filter(c => countriesByActivity.includes(c.id))
+        return {
+          ...state,
+          countries: countriesFiltered
+      }
       default:
         return state
-  }
-};
+      }
+}

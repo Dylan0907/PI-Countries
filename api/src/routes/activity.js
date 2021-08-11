@@ -2,6 +2,24 @@ const router = require('express').Router();
 const {Country, Activity} = require('../db.js');
 const axios = require('axios');
 
+router.get('/', async function (req, res, next){
+  try {
+      const activity = await Activity.findAll({
+        attributes: ["id", "name", "difficulty", "duration", "season"],
+        include: [
+        {
+          model: Country,
+          through: {
+            attributes: [],
+          }
+        }]
+      });
+      return res.json(activity)
+    } catch(error) {
+      next(error);
+    }
+})
+
 router.post('/', function (req, res, next) {
     const {
       name,

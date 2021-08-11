@@ -8,7 +8,7 @@ router.get('/', async function (req, res, next){
   const name = req.query.name;
   let countries = []
   if(name === undefined) {
-    
+
     let countriesDB = await Country.findAll({
         attributes: ["id", "name", "image", "continent", "capital",
         "subregion", "area", "population"]
@@ -47,7 +47,7 @@ router.get('/', async function (req, res, next){
            name: { [Op.like]: `%${name.toUpperCase()}%` },
         },
          attributes: ["id", "name", "image", "continent", "capital",
-         "subregion", "area", "population"]
+         "subregion", "area", "population"],
      });
      return res.json(countries)
   }
