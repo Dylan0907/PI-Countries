@@ -36,7 +36,7 @@ export default function Filters() {
         <option value="">Select an activity</option>
         {activities.map((a)=>{
           return (
-            <option value={a.name}>{a.name}</option>
+            <option value={a.name} key={a.name}>{a.name}</option>
           )
         })}
       </select>

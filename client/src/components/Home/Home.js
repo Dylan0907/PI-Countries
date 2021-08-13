@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Home.css'
+
 
 export default function Home (){
   return (
     <React.Fragment>
-            <div>
-                <div>
+            <div className='home'>
                     <Link to="/main">
-                        <button>START</button>
+                        <button className='button'><span>START </span></button>
                     </Link>
-                </div>
             </div>
       </React.Fragment>
   )

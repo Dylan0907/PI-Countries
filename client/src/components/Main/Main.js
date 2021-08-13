@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {getCountries, getActivities} from "../../actions/actions"
 import { Link } from 'react-router-dom';
 import Panel from '../Panel/Panel'
-import Card from '../Card/Card'
+import Cards from '../Cards/Cards'
 import Pagination from '../Pagination/Pagination'
+import './Main.css'
 
 export default function MainPage () {
   const dispatch = useDispatch();
@@ -28,10 +29,10 @@ export default function MainPage () {
   };
   return(
     <React.Fragment>
-        <div>
-          <h1>Countries</h1>
+        <div className="titleMain">
+          <h1>Countries of the world</h1>
           <Link to="/addactivity">
-            <button>Add Touristic Activity</button>
+            <button>Add a Touristic Activity</button>
           </Link>
         </div>
         <Panel/>
@@ -49,15 +50,7 @@ export default function MainPage () {
               paginate={paginate}
           />
         </div>
-        {currentCountries?.map((c) => {
-          return (
-            <fragment className='countries'>
-              <Link to={"/detail/" + c.id}>
-                <Card name={c.name} image={c.image} continent={c.continent} key={c.id} />
-              </Link>
-            </fragment>
-          );
-        })}
+        <Cards currentCountries={currentCountries}/>
     </React.Fragment>
   )
 }

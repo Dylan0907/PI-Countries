@@ -8,7 +8,7 @@ export default function Pagination ({countriesPerPage, allCountries,paginate}) {
         <>
             <nav className='pagination'  style={{display: "inline-block"}}>
                 {pageNumbers && pageNumbers.map (number => (
-                            <button onClick={() =>paginate(number)}>{number}</button>
+                            <button onClick={() =>paginate(number)} key={number}>{number}</button>
                     ))
                 }
             </nav>

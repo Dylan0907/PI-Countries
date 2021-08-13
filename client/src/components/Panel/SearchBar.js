@@ -2,6 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import { useDispatch } from "react-redux";
 import {getCountriesByName} from "../../actions/actions"
+import './SearchBar.css'
 
 export default function SearchBar() {
 
@@ -24,13 +25,14 @@ export default function SearchBar() {
           <input
             type="text"
             name="search"
+            className="inputSearch"
             placeholder="Search country..."
             onChange = {(e) => handleInputChange(e)}
           />
-          <button type="submit"
+        <button type="submit" className="buttonSearch"
             onClick={(e) => handleSubmit(e)}
             >
-            Try
+            Search
           </button>
         </form>
         </React.Fragment>

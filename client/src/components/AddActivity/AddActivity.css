@@ -1,0 +1,47 @@
+.activityForm {
+  height:600px;
+  width: 500px;
+  border: solid 2px grey;
+  border-radius: 10px;
+  margin:20px;
+  padding: 5px 0 50px 40px;
+  background-color: #FAEBD7;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.activitySelect{
+  position: relative;
+  font-family: Arial;
+  width:200px;
+}
+
+.activityTitle{
+  font-weight: 40;
+}
+
+p {
+  color:black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#activityButton{
+  border-radius: 8px;
+  background-color: #F0F8FF;
+  font-size: 15px;
+  width: 150px;
+  padding: 4px;
+  cursor: pointer;
+  margin: 10px;
+  opacity: 1.2;
+  position: fixed;
+  top: 90%;
+  left: 60%;
+}
+
+select{
+  border-radius: 4px;
+}

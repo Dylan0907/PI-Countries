@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Link,useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import {postActivity} from "../../actions/actions"
+import './AddActivity.css'
 
 function validate(input) {
     let errors = {};
@@ -84,10 +85,10 @@ export default function AddActivity() {
               <button>Return Main</button>
             </Link>
           </div>
-          <div>
+          <div className="activityForm">
                 <div>
                     <div>
-                    <h1>CREATE ACTIVITY</h1>
+                    <h1 className="activityTitle">CREATE A NEW ACTIVITY</h1>
                     </div>
                     <form onSubmit={(e)=>handleSubmit(e)}>
                         <div>
@@ -95,12 +96,12 @@ export default function AddActivity() {
                         <input
                           type="text"
                           name="name"
-                          className="input-post"
                           placeholder="Name..."
                           onChange={(e)=>handleChange(e)}
                         />
                         </div>
                         <p>Difficulty</p>
+                        <div className="activitySelect">
                         <select name="difficulty" onChange={(e) => handleSelect(e)}>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -108,27 +109,30 @@ export default function AddActivity() {
                           <option value="4">4</option>
                           <option value="5">5</option>
                         </select>
+                        </div>
                         <p>Duration</p>
-                        <div className="sel-duration">
+                        <div>
                           <input
                             type="number"
                             step=".1"
                             name='duration'
-                            className="input-post"
                             placeholder="Duration..."
                             onChange={(e)=>handleChange(e)}
                           />
                         </div>
                         <p>Season</p>
+                        <div className="activitySelect">
                         <select name="season" onChange={(e) => handleSelect(e)}>
                           <option value="Spring">Spring</option>
                           <option value="Summer">Summer</option>
                           <option value="Autumn">Autumn</option>
                           <option value="Winter">Winter</option>
                         </select>
-                        <div>
+                        </div>
                         <p>Select countries</p>
+                        <div>
                         <select name="countries" onChange={(e) => handleSelectCountries(e)}>
+                          <option value="">Choose countries...</option>
                           {allCountries.map((country)=>{
                             return <option
                               value={country.id}
@@ -143,13 +147,11 @@ export default function AddActivity() {
                               <p>{country}</p>
                               <button onClick={()=> handleDelete(country)}>x</button>
                               </div>
-                            )}
-                            )
+                            )})
                           }
                         </div>
-                        <hr />
                         <div>
-                          <button type="submit">ADD ACTIVITY</button>
+                          <button type="submit" id="activityButton">ADD ACTIVITY</button>
                         </div>
                     </form>
                 </div>

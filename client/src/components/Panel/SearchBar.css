@@ -1,0 +1,23 @@
+.inputSearch{
+  margin:5px;
+  width: 200px;
+  padding: 5px;
+  height: 20px;
+  border-radius: 10px;
+  outline: none;
+  position:relative;
+  color: black;
+}
+
+.buttonSearch{
+  width: 100px;
+  height: 33px;
+  border-radius: 10px;
+  padding: 5px;
+  margin:5px;
+  background:	#f0f8ff;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  font-size: 17px;
+}
