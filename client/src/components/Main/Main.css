@@ -3,6 +3,12 @@
 
 }
 
+.paginationCards{
+  background-color:	#cd853f;
+  opacity: 0.9;
+  background-size: 100%;
+}
+
 .titleMain h1{
   display: block;
   margin-left: auto;
@@ -34,4 +40,13 @@
 .titleMain button:hover {
   opacity: 1;
   color: black;
+}
+
+.logicBox{
+
+}
+
+.logicBox button{
+  height:30px;
+  margin:30px
 }

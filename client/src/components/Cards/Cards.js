@@ -1,17 +1,15 @@
 import React from 'react'
 import Card from '../Card/Card'
-import { Link } from 'react-router-dom';
+import "./Cards.css"
 
 export default function Cards({currentCountries}) {
   return(
-    <div>
+    <div className="gridContainer">
     {currentCountries.map((c) =>{
         return (
-        <React.Fragment>
-          <Link to={"/detail/" + c.id}>
-            <Card name={c.name} image={c.image} continent={c.continent} key={c.id} />
-          </Link>
-        </React.Fragment>
+        <div className="gridItem">
+            <Card name={c.name} image={c.image} continent={c.continent} key={c.id} id={c.id}/>
+        </div>
       )})}
     </div>
    )

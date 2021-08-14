@@ -35,22 +35,15 @@ export default function MainPage () {
             <button>Add a Touristic Activity</button>
           </Link>
         </div>
-        <Panel/>
-        <button
-          onClick={(e) => {
-            handleClick(e);
-          }}
-        >
-          Restore
-        </button>
-        <div>
+        <Panel handleClick={handleClick}/>
+        <div className="paginationCards">
           <Pagination
               countriesPerPage={countriesPerPage}
               allCountries={allCountries.length}
               paginate={paginate}
           />
-        </div>
         <Cards currentCountries={currentCountries}/>
+        </div>
     </React.Fragment>
   )
 }

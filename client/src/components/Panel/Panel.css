@@ -1,5 +1,10 @@
 .panel{
   display: inline-flex;
-   background-color:#ffdead;
-   width: 100%;
+  background-color:#ffdead;
+  width: 100%;
+}
+
+#panelButton{
+  height:35px;
+  margin:10px;
 }
