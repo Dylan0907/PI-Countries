@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import Panel from '../Panel/Panel'
 import Cards from '../Cards/Cards'
 import Pagination from '../Pagination/Pagination'
-import './Main.css'
-import logo from './pngwing.com.png';
+import './Main.css';
 
 export default function MainPage () {
   const dispatch = useDispatch();
