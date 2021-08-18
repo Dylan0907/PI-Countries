@@ -1,22 +1,13 @@
-import React, {useState} from 'react'
-import { Link,useHistory } from 'react-router-dom';
+import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import {postActivity} from "../../actions/actions"
-import './AddActivity.css'
-
-function validate(input) {
-    let errors = {};
-    if (!input.name) {
-      errors.name = 'A name is required';
-    }
-    return errors;
-  };
+import {postActivity,getCountries} from "../../actions/actions";
+import './AddActivity.css';
 
 export default function AddActivity() {
 
-  const history = useHistory()
   const dispatch = useDispatch();
-  const [errors,setErrors] = useState({});
+  const [error,setError] = useState(false);
   const [input,setInput] = useState({
         name: "",
         difficulty: "",
@@ -29,12 +20,7 @@ export default function AddActivity() {
       setInput({
           ...input,
           [e.target.name] : e.target.value
-       })
-      setErrors(validate({
-        ...input,
-        [e.target.name]: e.target.value
-      })
-    );
+       });
   }
 
   function handleDelete(el){
@@ -59,10 +45,11 @@ export default function AddActivity() {
 
   function handleSubmit(e){
     e.preventDefault();
-    setErrors(validate({
-        ...input,
-        [e.target.name]:e.target.value
-    }));
+    if (input.name.trim()==='' || input.difficulty[0].trim()==='' || input.countries.length ===0
+      || input.season[0].trim()==='') {
+      setError(true);
+    } else {
+    setError(false);
     dispatch(postActivity(input))
     alert("Activity created!!")
     setInput({
@@ -73,16 +60,20 @@ export default function AddActivity() {
         image: '',
         countries:[]
     })
-    history.push('/main')
-}
+    }
+  }
+
+  useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
 
   const allCountries = useSelector((state) => state.countries)
 
     return (
-        <React.Fragment>
+        <div className="AddActivityPage">
           <div>
             <Link to="/main">
-              <button>Return Main</button>
+              <button className="buttonAddActivity">Return Main</button>
             </Link>
           </div>
           <div className="activityForm">
@@ -90,6 +81,7 @@ export default function AddActivity() {
                     <div>
                     <h1 className="activityTitle">CREATE A NEW ACTIVITY</h1>
                     </div>
+                    {error ? <p className='error'>Every field is required</p> : null}
                     <form onSubmit={(e)=>handleSubmit(e)}>
                         <div>
                         <p>Name</p>
@@ -113,8 +105,7 @@ export default function AddActivity() {
                         <p>Duration</p>
                         <div>
                           <input
-                            type="number"
-                            step=".1"
+                            type="text"
                             name='duration'
                             placeholder="Duration..."
                             onChange={(e)=>handleChange(e)}
@@ -140,10 +131,10 @@ export default function AddActivity() {
                           })}
                         </select>
                         </div>
-                        <div>
+                        <div className="grid-countries">
                           {input.countries.map((country)=>
                             {return (
-                              <div>
+                              <div className="grid-country">
                               <p>{country}</p>
                               <button onClick={()=> handleDelete(country)}>x</button>
                               </div>
@@ -156,6 +147,6 @@ export default function AddActivity() {
                     </form>
                 </div>
             </div>
-        </React.Fragment>
+        </div>
     )
 }

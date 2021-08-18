@@ -19,7 +19,7 @@ const myCountry = useSelector ((state) => state.countryDetail);
         <div className="box">
           <div className="containerDetail">
           <h2>{myCountry.name} ({id})</h2>
-          <img  src={myCountry.image} alt= '' width="250px" height="150px"/>
+          <img  src={myCountry.image} className="detail-img" alt= '' width="250px" height="150px"/>
           <h3>Continent: {myCountry.continent}</h3>
           <h4>Capital: {myCountry.capital}</h4>
           <h4>Subregion: {myCountry.subregion}</h4>
@@ -30,9 +30,9 @@ const myCountry = useSelector ((state) => state.countryDetail);
             <h2>Activities</h2>
           {!myCountry.activities ? <p>no hay</p>: myCountry.activities.map((a)=>{
             return(
-              <div id="activities">
+              <div className="activities">
                 <h3>Name: {a.name}</h3>
-                <h5>Difficulty: {a.difficulty}</h5>
+                <h5>Difficulty: {a.difficulty} </h5>
                 <h5>Season: {a.season}</h5>
                 <h5>Duration: {a.duration}</h5>
               </div>

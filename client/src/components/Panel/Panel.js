@@ -9,16 +9,16 @@ export default function Panel({handleClick}) {
         <React.Fragment>
           <div className="panel">
           <SearchBar />
+            <button
+              id="panelButton"
+              onClick={(e) => {
+                handleClick(e);
+              }}
+            >
+              Restore
+            </button>
           <Order />
           <Filters />
-          <button
-            id="panelButton"
-            onClick={(e) => {
-              handleClick(e);
-            }}
-          >
-            Restore
-          </button>
           </div>
         </React.Fragment>
     )

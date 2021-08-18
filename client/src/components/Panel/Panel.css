@@ -1,10 +1,23 @@
 .panel{
   display: inline-flex;
   background-color:#ffdead;
-  width: 100%;
+  width:98.7%;
+  border-bottom-style:solid;
+  border-top-style:solid;
+  border-color: black;
+  padding: 10px;
 }
 
 #panelButton{
-  height:35px;
-  margin:10px;
+  width: 100px;
+  height: 33px;
+  border-radius: 10px;
+  padding: 5px;
+  margin:5px;
+  margin-top: 8px;
+  background:	#f0f8ff;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  font-size: 17px;
 }

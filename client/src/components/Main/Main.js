@@ -6,6 +6,7 @@ import Panel from '../Panel/Panel'
 import Cards from '../Cards/Cards'
 import Pagination from '../Pagination/Pagination'
 import './Main.css'
+import logo from './pngwing.com.png';
 
 export default function MainPage () {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export default function MainPage () {
   return(
     <React.Fragment>
         <div className="titleMain">
-          <h1>Countries of the world</h1>
+          <h1>COUNTRIES OF THE WORLD</h1>
           <Link to="/addactivity">
             <button>Add a Touristic Activity</button>
           </Link>

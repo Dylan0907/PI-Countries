@@ -1,0 +1,20 @@
+.card-title {
+  color:#2F4F4F;
+  font: italic 1.2em "Fira Sans", serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+a{
+  text-decoration: none;
+}
+.container-card{
+  margin-bottom: 20px;
+}
+
+.card-continent{
+  font: italic 1.2em "Fira Sans", serif;
+}
+
+.card-img{
+  border-radius: 10px;
+}

@@ -1,11 +1,15 @@
 .inputSearch{
   margin:5px;
-  width: 200px;
-  padding: 5px;
+  width: 250px;
+  padding: 7px;
   height: 20px;
   border-radius: 10px;
+  border-color: black;
+  border-width: 2.4px;
   outline: none;
   position:relative;
+  font-size: 15px;
+  font-family: Verdana, sans-serif;
   color: black;
 }
 

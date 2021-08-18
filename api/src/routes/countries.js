@@ -30,13 +30,13 @@ router.get('/', async function (req, res, next){
             });
          countries.push(country);
        }
-       res.json(countries);
+       res.status(200).json(countries);
      } catch (error){
        next(error);
      }
    } else {
      try{
-       res.json(countriesDB);
+       res.status(200).json(countriesDB);
      } catch (error){
        next(error)
      }
@@ -49,7 +49,11 @@ router.get('/', async function (req, res, next){
          attributes: ["id", "name", "image", "continent", "capital",
          "subregion", "area", "population"],
      });
-     return res.json(countries)
+     if(countries.length===0){
+       return res.status(400).json({msg:'No country was found'});
+     } else {
+       return res.status(200).json(countries)
+     }
   }
 })
 
@@ -66,7 +70,11 @@ router.get('/:idCountry', async function (req, res, next){
           }
         }]
       });
-      return res.json(country)
+      if(!country){
+        return res.status(400).json({msg:'Wrong id'});
+      } else {
+        return res.status(200).json(country)
+      }
     } catch(error) {
       next(error);
     }

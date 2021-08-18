@@ -1,0 +1,16 @@
+.order-container{
+  display: grid;
+  padding:5px;
+  padding-top: 0px;
+  margin:5px;
+}
+
+.order-container select{
+  padding:2px;
+  margin:2px;
+  width:200px;
+  border-style: solid;
+  border-color: #B22222;
+  border-radius: 10px;
+  cursor:pointer;
+}

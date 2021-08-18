@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import {filterByContinent,filterByActivity} from "../../actions/actions"
+import "./Filters.css"
 
 export default function Filters() {
 
@@ -11,19 +12,21 @@ export default function Filters() {
     if(e.target.value !== ''){
     e.preventDefault();
     dispatch(filterByContinent(e.target.value))}
+    e.target.value='';
   };
 
   function handleFilterActivity (e){
     if(e.target.value !== ''){
     e.preventDefault();
     dispatch(filterByActivity(e.target.value))}
+    e.target.value='';
   };
 
   return (
-    <React.Fragment>
+    <div className="filter-container">
     <div>
       <select onChange={e => handleFilterContinent(e)} >
-        <option value="">Select a continent...</option>
+        <option value="">Filter by continent</option>
         <option value="Africa">Africa</option>
         <option value="Americas">Americas</option>
         <option value="Asia">Asia</option>
@@ -33,7 +36,7 @@ export default function Filters() {
     </div>
     <div>
       <select onChange={e => handleFilterActivity(e)}>
-        <option value="">Select an activity</option>
+        <option value="">Filter by activity</option>
         {activities.map((a)=>{
           return (
             <option value={a.name} key={a.name}>{a.name}</option>
@@ -41,6 +44,6 @@ export default function Filters() {
         })}
       </select>
     </div>
-    </React.Fragment>
+  </div>
   )
 }
