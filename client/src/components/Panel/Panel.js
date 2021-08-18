@@ -4,11 +4,11 @@ import Order from './Order'
 import Filters from './Filters'
 import './Panel.css'
 
-export default function Panel({handleClick}) {
+export default function Panel({handleClick, setPage}) {
     return (
         <React.Fragment>
           <div className="panel">
-          <SearchBar />
+          <SearchBar setPage={setPage}/>
             <button
               id="panelButton"
               onClick={(e) => {
@@ -17,8 +17,8 @@ export default function Panel({handleClick}) {
             >
               Restore
             </button>
-          <Order />
-          <Filters />
+          <Order setPage={setPage}/>
+          <Filters setPage={setPage}/>
           </div>
         </React.Fragment>
     )

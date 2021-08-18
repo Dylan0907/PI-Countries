@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import {orderByName, orderByPop} from "../../actions/actions"
 import './Order.css'
 
-export default function Order () {
+export default function Order ({setPage}) {
 
   const dispatch = useDispatch()
 
@@ -12,8 +12,10 @@ export default function Order () {
     let value = e.target.value;
     if (value.includes('max')) {
       dispatch(orderByPop(e.target.value))
+      setPage();
     } else if(value!==''){
       dispatch(orderByName(e.target.value))
+      setPage();
     }
   };
 

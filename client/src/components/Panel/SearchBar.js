@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import {getCountriesByName} from "../../actions/actions"
 import './SearchBar.css'
 
-export default function SearchBar() {
+export default function SearchBar({setPage}) {
 
   const dispatch = useDispatch()
   const [name,setName] = useState("")
@@ -16,6 +16,7 @@ export default function SearchBar() {
 
   function handleSubmit(e){
     e.preventDefault()
+    setPage();
     dispatch(getCountriesByName(name))
    }
 

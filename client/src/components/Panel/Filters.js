@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {filterByContinent,filterByActivity} from "../../actions/actions"
 import "./Filters.css"
 
-export default function Filters() {
+export default function Filters({setPage}) {
 
   const dispatch = useDispatch()
   const activities = useSelector((state) => state.activities);
@@ -11,6 +11,7 @@ export default function Filters() {
   function handleFilterContinent (e){
     if(e.target.value !== ''){
     e.preventDefault();
+    setPage();
     dispatch(filterByContinent(e.target.value))}
     e.target.value='';
   };
@@ -18,6 +19,7 @@ export default function Filters() {
   function handleFilterActivity (e){
     if(e.target.value !== ''){
     e.preventDefault();
+    setPage();
     dispatch(filterByActivity(e.target.value))}
     e.target.value='';
   };

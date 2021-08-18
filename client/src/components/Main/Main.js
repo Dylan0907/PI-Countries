@@ -23,9 +23,12 @@ export default function MainPage () {
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
   const currentCountries = allCountries.slice(indexOfFirstCountry,indexOfLastCountry)
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const setPage = () =>{
+    setCurrentPage(1);
+  }
   const handleClick = (e) => {
     e.preventDefault();
-    setCurrentPage(1)
+    setCurrentPage(1);
     dispatch(getCountries());
   };
   return(
@@ -36,7 +39,7 @@ export default function MainPage () {
             <button>Add a Touristic Activity</button>
           </Link>
         </div>
-        <Panel handleClick={handleClick}/>
+        <Panel handleClick={handleClick} setPage={setPage}/>
         <div className="paginationCards">
           <Pagination
               countriesPerPage={countriesPerPage}
